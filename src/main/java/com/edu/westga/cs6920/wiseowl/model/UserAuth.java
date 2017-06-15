@@ -1,13 +1,12 @@
 package com.edu.westga.cs6920.wiseowl.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +19,8 @@ public class UserAuth
 	private long user_auth_id;
 	
 	private String username;
+	
+	@Column(name="password_hash")
 	private String password;	
 	
 	@Temporal(TemporalType.TIMESTAMP)

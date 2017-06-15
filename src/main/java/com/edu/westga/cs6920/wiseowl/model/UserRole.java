@@ -1,7 +1,5 @@
 package com.edu.westga.cs6920.wiseowl.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
