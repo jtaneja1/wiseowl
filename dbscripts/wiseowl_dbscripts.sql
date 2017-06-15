@@ -125,7 +125,7 @@ DROP TABLE IF EXISTS `wiseowl`.`user_auth`;
 CREATE TABLE IF NOT EXISTS `wiseowl`.`user_auth` (
   `user_auth_id`          INT NOT NULL AUTO_INCREMENT COMMENT '', -- Will be auto-incremented by Hibernate.Defined in java using annotations
   `username`		      VARCHAR(16)  NOT NULL,
-  `password_hash`      	  BINARY(128)  NOT NULL,
+  `password_hash`      	  CHAR(64)  NOT NULL,
   `create_datetime`       TIMESTAMP(0)  NOT NULL, -- Auto inserted by the trigger at the time of row creation
   `update_datetime`       TIMESTAMP(0) NULL,          -- Auto updated by the trigger at the time of row update
   CONSTRAINT pk_user_auth PRIMARY KEY (user_auth_id))
@@ -184,7 +184,3 @@ BEFORE UPDATE
 ON siteuser
 FOR EACH ROW
 SET NEW.update_datetime:= NOW();
-
-
-insert into user_auth(password_hash, username) values (SHA2('password1',512),'jatin');
-insert into siteuser(firstname,lastname,nickname,dob,user_role_id,user_auth_id) values('Jatin','Taneja','jatin','1985-01-01',2,1);
