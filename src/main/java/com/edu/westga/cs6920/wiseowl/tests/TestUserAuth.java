@@ -2,16 +2,9 @@ package com.edu.westga.cs6920.wiseowl.tests;
 
 import static org.junit.Assert.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 import org.junit.Test;
 
-import com.edu.westga.cs6920.wiseowl.model.User;
 import com.edu.westga.cs6920.wiseowl.model.UserAuth;
-import com.edu.westga.cs6920.wiseowl.model.UserRole;
 
 /**
  * This JUnit test class tests to make sure the constructor, getter, and setter methods
