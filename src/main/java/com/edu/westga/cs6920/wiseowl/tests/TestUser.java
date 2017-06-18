@@ -14,7 +14,7 @@ import com.edu.westga.cs6920.wiseowl.model.UserAuth;
 import com.edu.westga.cs6920.wiseowl.model.UserRole;
 
 /**
- * This JUnit test class tests to make sure the constructor and getter methods
+ * This JUnit test class tests to make sure the constructor, getter, and setter methods
  * of the User class work properly.
  * 
  * @author David Bennett
@@ -25,7 +25,7 @@ public class TestUser {
 	private User user;
 	
 	/**
-	 * Test to make sure the constructed user has a valid User ID.
+	 * Test to make sure the constructed user has a valid user ID.
 	 * @throws Exception 
 	 */
 	@Test
@@ -137,7 +137,7 @@ public class TestUser {
 	}
 	
 	/**
-	 * Test to make sure the constructed user has a valid created date. I need to ask whether new users are supposed to have 
+	 * Test to make sure the constructed user does not have a created date. I need to ask whether new users are supposed to have 
 	 * a create date attached to them.
 	 * @throws Exception 
 	 */
@@ -171,7 +171,7 @@ public class TestUser {
 	}
 	
 	/**
-	 * Test to make sure the constructed user has a valid UserAuth.
+	 * Test to make sure the constructed user has a UserAuth.
 	 * @throws Exception 
 	 */
 	@Test
