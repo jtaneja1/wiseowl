@@ -22,7 +22,7 @@ public class TestUserAuth {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserAuthHasUserAuthID() throws Exception {
+	public void testConstructedUserAuthHasUserAuthID() throws Exception {
 		this.userauth = new UserAuth("jatin", "password1");
 		assertNotNull(this.userauth.getUser_auth_id());
 	}
@@ -43,7 +43,7 @@ public class TestUserAuth {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserAuthHasCorrectUsername() throws Exception {
+	public void testConstructedUserAuthHasCorrectUsername() throws Exception {
 		this.userauth = new UserAuth("jatin", "password1");
 		assertEquals("jatin", this.userauth.getUsername());
 	}
@@ -64,7 +64,7 @@ public class TestUserAuth {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasCorrectLastName() throws Exception {
+	public void testConstructedUserHasCorrectLastName() throws Exception {
 		this.userauth = new UserAuth("jatin", "password1");
 		assertEquals("password1", this.userauth.getPassword());
 	}
@@ -86,7 +86,7 @@ public class TestUserAuth {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasNoCreateDateTime() throws Exception {
+	public void testConstructedUserHasNoCreateDateTime() throws Exception {
 		this.userauth = new UserAuth("jatin", "password1");
 		assertNull(this.userauth.getCreate_datetime());
 	}
@@ -97,7 +97,7 @@ public class TestUserAuth {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasNoUpdateDateTime() throws Exception {
+	public void testConstructedUserHasNoUpdateDateTime() throws Exception {
 		this.userauth = new UserAuth("jatin", "password1");
 		assertNull(this.userauth.getUpdate_datetime());
 	}

@@ -29,7 +29,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasUserID() throws Exception {
+	public void testConstructedUserHasUserID() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertNotNull(this.user.getUser_ID());
 	}
@@ -50,7 +50,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasCorrectFirstName() throws Exception {
+	public void testConstructedUserHasCorrectFirstName() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertEquals("firstname", this.user.getFirstname());
 	}
@@ -71,7 +71,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasCorrectLastName() throws Exception {
+	public void testConstructedUserHasCorrectLastName() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertEquals("lastname", this.user.getLastname());
 	}
@@ -92,7 +92,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasCorrectNickname() throws Exception {
+	public void testConstructedUserHasCorrectNickname() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertEquals("nickname", this.user.getNickname());
 	}
@@ -113,7 +113,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasCorrectDOB() throws Exception {
+	public void testConstructedUserHasCorrectDOB() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		DateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 		String dateString = format.format(this.user.getDob());
@@ -142,7 +142,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasNoCreateDateTime() throws Exception {
+	public void testConstructedUserHasNoCreateDateTime() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertNull(this.user.getCreate_datetime());
 	}
@@ -153,7 +153,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasNoUpdateDateTime() throws Exception {
+	public void testConstructedUserHasNoUpdateDateTime() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertNull(this.user.getUpdate_datetime());
 	}
@@ -175,7 +175,7 @@ public class TestUser {
 	 * @throws Exception 
 	 */
 	@Test
-	public void constructedUserHasUserAuth() throws Exception {
+	public void testConstructedUserHasUserAuth() throws Exception {
 		this.user = new User("firstname", "lastname", "nickname", "01/02/2003", "jatin", "password1");
 		assertNotNull(this.user.getUserAuth());
 	}

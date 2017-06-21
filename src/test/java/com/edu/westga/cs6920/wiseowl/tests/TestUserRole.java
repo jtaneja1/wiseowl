@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.edu.westga.cs6920.wiseowl.model.UserAuth;
 import com.edu.westga.cs6920.wiseowl.model.UserRole;
 
 /**
