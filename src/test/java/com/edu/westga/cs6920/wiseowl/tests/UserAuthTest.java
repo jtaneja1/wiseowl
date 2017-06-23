@@ -13,7 +13,7 @@ import com.edu.westga.cs6920.wiseowl.model.UserAuth;
  * @author David Bennett
  * @version 6/17/2017
  */
-public class TestUserAuth {
+public class UserAuthTest {
 
 	private UserAuth userauth;
 	

@@ -20,7 +20,7 @@ import com.edu.westga.cs6920.wiseowl.model.UserRole;
  * @author David Bennett
  * @version 6/17/2017
  */
-public class TestUser {
+public class UserTest {
 
 	private User user;
 	
