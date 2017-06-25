@@ -1,7 +1,8 @@
 package com.edu.westga.cs6920.wiseowl.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,23 +14,23 @@ public class Book implements Serializable
 	 /**
 	  * 
 	  */
-	 private static final long serialVersionUID = 2L;
+	 private static final long serialVersionUID = 3L;
 	 @Id
 	 private long book_ID;
 	 private String book_title;
 	 private String book_author_name;
-	 private Date book_publish_date;
+	 private LocalDate book_publish_date;
 	 private String book_isbn_13;
 	 private String book_notes;
 	 private String book_read_comments;
 	 private long book_owned_format_ID;
-	 private Date book_read_date;
+	 private LocalDate book_read_date;
 	 private String book_read_rating;
 	 private long book_read_source_ID;
 	 private long book_read_format_ID;
 	 private long create_user_ID;
-	 private Date create_datetime;
-	 private Date update_datetime;
+	 private Timestamp create_datetime;
+	 private Timestamp update_datetime;
 	 
 	 public Book()
 	 { }
@@ -57,11 +58,11 @@ public class Book implements Serializable
 	 public void setBook_author_name(String book_author_name) {
 		 this.book_author_name = book_author_name;
 	 }
-	 public Date getBook_publish_date() {
+	 public LocalDate getBook_publish_date() {
 		 return book_publish_date;
 	 }
-	 public void setBook_publish_date(String book_publish_date) {
-		 
+	 public void setBook_publish_date(LocalDate book_publish_date) {
+		 this.book_publish_date = book_publish_date;
 	 }
 	 public String getBook_isbn_13() {
 		 return book_isbn_13;
@@ -87,11 +88,11 @@ public class Book implements Serializable
 	 public void setBook_owned_format_ID(long book_owned_format_ID) {
 		 this.book_owned_format_ID = book_owned_format_ID;
 	 }
-	 public Date getBook_read_date() {
+	 public LocalDate getBook_read_date() {
 		 return book_read_date;
 	 }
-	 public void setBook_read_date(String book_read_date) {
-		 
+	 public void setBook_read_date(LocalDate book_read_date) {
+		 this.book_read_date = book_read_date;
 	 }
 	 public String getBook_read_rating() {
 		 return book_read_rating;
@@ -117,16 +118,16 @@ public class Book implements Serializable
 	 public void setCreate_user_ID(long create_user_ID) {
 		 this.create_user_ID = create_user_ID;
 	 }
-	 public Date getCreate_datetime() {
+	 public Timestamp getCreate_datetime() {
 		 return create_datetime;
 	 }
-	 public void setCreate_datetime(String create_datetime) {
-		 
+	 public void setCreate_datetime(Timestamp create_datetime) {
+		 this.create_datetime = create_datetime;
 	 }
-	 public Date getUpdate_datetime() {
+	 public Timestamp getUpdate_datetime() {
 		 return update_datetime;
 	 }
-	 public void setUpdate_datetime(String update_datetime) {
-		 
+	 public void setUpdate_datetime(Timestamp update_datetime) {
+		 this.update_datetime = update_datetime;
 	 }
 }
