@@ -1,0 +1,67 @@
+@CHARSET "ISO-8859-1";
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/* Override the 'form-control' width from 100% to 40% */
+.wiseowl-form-control{
+	width: 40%;
+}
+
+/* Error text for form validation errors */
+div.error {
+	color: red; font-weight: bold;
+	padding-top:0.5em;
+}
+div.submiterror{
+	padding-bottom:1.0em;
+	padding-top:0;
+}
+.xicon{
+	height:1.4em;
+	padding-right:0.4em;
+	padding-bottom:0.2em;
+}
+
+.bookreadcomment {
+	padding-top: 1em;	
+}
+
+.bookindex {
+	width: 5%;
+	text-align: center;
+}
+
+.bookdetails {
+	width: 53%;	
+}
+
+.bookdetailsheader {
+	text-align: center;
+}
+
+.bookrating {
+	width: 10%;
+	text-align: center;
+}
+
+.bookreaddate {
+	width: 10%;
+	text-align: center;
+}
+
+.booksource {
+	width: 11%;
+	text-align: center;
+}
+
+.bookformat {
+	width: 11%;
+	text-align: center;
+}
+
+
+</

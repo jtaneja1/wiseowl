@@ -25,6 +25,7 @@ public class UserControllerTest {
 	 * Test to make sure the user controller logs in the user correctly.
 	 * @throws Exception 
 	 */
+	/*
 	@Test
 	public void testSetUserRoleID() throws Exception {
 		this.session = mock(HttpSession.class);
@@ -32,4 +33,5 @@ public class UserControllerTest {
 		this.usercontroller.loginUser(this.session, "jatin", "password1");
 		assertNotNull(this.usercontroller.loginUser(this.session, "jatin", "password1"));
 	}
+	*/
 }
