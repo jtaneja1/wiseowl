@@ -20,13 +20,14 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`booksource` (
   `booksource_desc` VARCHAR(150) NOT NULL COMMENT '',
   CONSTRAINT pk_booksource PRIMARY KEY (booksource_id),
   CONSTRAINT unique_booksource_code unique(`booksource_code`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 INSERT INTO booksource(booksource_code,booksource_name,booksource_desc) VALUES ('001','LIBRARY','Borrowed from a Library');
 INSERT INTO booksource(booksource_code,booksource_name,booksource_desc) VALUES ('002','OWNED','Self Owned');
 INSERT INTO booksource(booksource_code,booksource_name,booksource_desc) VALUES ('003','FRIEND','Borrowed from a Friend');
 INSERT INTO booksource(booksource_code,booksource_name,booksource_desc) VALUES ('004','STORE','Borrowed from a Store');
+INSERT INTO booksource(booksource_code,booksource_name,booksource_desc) VALUES ('005','ONLINE','Online book');
 
 
 -- -----------------------------------------------------
@@ -41,14 +42,15 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`bookformat` (
   `bookformat_desc` VARCHAR(150) NOT NULL COMMENT '',
   CONSTRAINT pk_bookformat PRIMARY KEY (bookformat_id),
   CONSTRAINT unique_bookformat_code unique(`bookformat_code`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('001','PDF','PDF format');
 INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('002','WORD','Any Word document');
 INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('003','HARDBOUND','Paper copy');
 INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('004','KINDLE','Amazon Kindle format');
 INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('005','IBOOKS','Apple iBooks format');
-
+INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('006','ePub','ePub Format');
+INSERT INTO bookformat(bookformat_code,bookformat_name,bookformat_desc) VALUES ('007','OTHER','Other Format');
 
 
 -- -----------------------------------------------------
@@ -62,10 +64,10 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`user_role` (
   `role_name` VARCHAR(50) NOT NULL COMMENT '',
   `role_desc` VARCHAR(150) NOT NULL COMMENT '',
   CONSTRAINT pk_user_role PRIMARY KEY (user_role_id))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 INSERT INTO user_role(role_code,role_name,role_desc) VALUES ('001','ADMIN','Site Administrator');
-INSERT INTO user_role(role_code,role_name,role_desc) VALUES ('002','SITEUSER','Regular Site User'); 
+INSERT INTO user_role(role_code,role_name,role_desc) VALUES ('002','SITEUSER','Regular Site User');
 
 
 
@@ -83,37 +85,37 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`book` (
   `book_publish_date`		DATE DEFAULT NULL,
   `book_isbn_13`          CHAR(13) DEFAULT NULL,-- unique,constraint check length
   `book_notes`            MEDIUMTEXT DEFAULT NULL,
-   -- The next 5 fields tell whether a book has been read or not
+  -- The next 5 fields tell whether a book has been read or not
   book_read_comments    TEXT, -- mandatory on UI
-  book_owned_format_id  INTEGER,        -- FK
+  -- book_owned_format_id  INTEGER,        -- FK
   book_read_date   	    DATE,			-- mandatory on UI 
   book_read_rating      CHAR(1),		-- mandatory on UI 
   book_read_source_id	INTEGER,        -- mandatory on UI      -- FK
   book_read_format_id   INTEGER,        -- mandatory on UI      -- FK
-  
+
   create_user_id        INTEGER       NOT NULL,
   create_datetime       TIMESTAMP  NOT NULL, -- Auto inserted by the trigger at the time of row creation
   update_datetime       TIMESTAMP NULL,           -- Auto updated by the trigger at the time of row update
   CONSTRAINT pk_book PRIMARY KEY (book_id),
-  CONSTRAINT fk_book_owned_fmt_id FOREIGN KEY(book_owned_format_id) REFERENCES bookformat(bookformat_id),
+  -- CONSTRAINT fk_book_owned_fmt_id FOREIGN KEY(book_owned_format_id) REFERENCES bookformat(bookformat_id),
   CONSTRAINT fk_book_read_src_id FOREIGN KEY(book_read_source_id) REFERENCES booksource(booksource_id),
-  CONSTRAINT fk_book_read_fmt_id FOREIGN KEY(book_read_format_id) REFERENCES bookformat(bookformat_id))  
-ENGINE = InnoDB;
+  CONSTRAINT fk_book_read_fmt_id FOREIGN KEY(book_read_format_id) REFERENCES bookformat(bookformat_id))
+  ENGINE = InnoDB;
 
 
 CREATE TRIGGER trig_book_create_datetime
 BEFORE INSERT
-ON book
+  ON book
 FOR EACH ROW
-SET NEW.create_datetime:= NOW();
+  SET NEW.create_datetime:= NOW();
 
 
 
 CREATE TRIGGER trig_book_update_datetime
 BEFORE UPDATE
-ON book
+  ON book
 FOR EACH ROW
-SET NEW.update_datetime:= NOW();
+  SET NEW.update_datetime:= NOW();
 
 
 
@@ -129,21 +131,21 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`user_auth` (
   `create_datetime`       TIMESTAMP(0)  NOT NULL, -- Auto inserted by the trigger at the time of row creation
   `update_datetime`       TIMESTAMP(0) NULL,          -- Auto updated by the trigger at the time of row update
   CONSTRAINT pk_user_auth PRIMARY KEY (user_auth_id))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 CREATE TRIGGER trig_user_auth_create_datetime
 BEFORE INSERT
-ON user_auth
+  ON user_auth
 FOR EACH ROW
-SET NEW.create_datetime:= NOW();
+  SET NEW.create_datetime:= NOW();
 
 
 CREATE TRIGGER trig_user_auth_update_datetime
 BEFORE UPDATE
-ON user_auth
+  ON user_auth
 FOR EACH ROW
-SET NEW.update_datetime:= NOW();
+  SET NEW.update_datetime:= NOW();
 
 
 
@@ -167,20 +169,20 @@ CREATE TABLE IF NOT EXISTS `wiseowl`.`siteuser` (
   CONSTRAINT pk_user PRIMARY KEY (user_id),
   CONSTRAINT fk_user_role_id FOREIGN KEY(user_role_ID) REFERENCES user_role(user_role_id),
   CONSTRAINT fk_user_auth_id FOREIGN KEY(user_auth_id) REFERENCES user_auth(user_auth_id))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 
 CREATE TRIGGER trig_siteuser_create_datetime
 BEFORE INSERT
-ON siteuser
+  ON siteuser
 FOR EACH ROW
-SET NEW.create_datetime:= NOW();
+  SET NEW.create_datetime:= NOW();
 
 
 
 CREATE TRIGGER trig_siteuser_update_datetime
 BEFORE UPDATE
-ON siteuser
+  ON siteuser
 FOR EACH ROW
-SET NEW.update_datetime:= NOW();
+  SET NEW.update_datetime:= NOW();
