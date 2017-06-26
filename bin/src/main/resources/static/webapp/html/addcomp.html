@@ -1,0 +1,102 @@
+
+<div class="alert alert-info fade in" data-alert="alert">
+	<h3>
+    	<strong>
+        	Add details about the Book you recently completed
+        </strong>
+    </h3>
+</div>
+
+<div class="error submiterror" ng-show="showSubmitError"><img alt="X Icon" src="../image/xicon.jpg" class="xicon">Please correct the below errors before submitting</div>
+
+<div class="panel panel-primary" >
+	<div class="panel-heading">Book Details</div>
+	<div class="panel-body">
+		<form  name="addcompBookForm" novalidate id="addcompform">
+		
+			<div class="form-group">
+    			<label for="book_ISBN_13">Book 13-digit ISBN (with no hyphens or dashes)</label><br/>
+				<input required ng-model="compbook.book_ISBN_13" type="text" class="form-control wiseowl-form-control" name="book_ISBN_13" id="book_ISBN_13" placeholder="Book ISBN" />
+    			<div class="error" ng-show="doesShow(addcompBookForm.book_ISBN_13)">{{getErrorText(addcompBookForm.book_ISBN_13.$error)}}</div>    		
+    		</div>      		
+    		
+  			<div class="form-group">
+    			<label for="bookTitle">Book Title</label>
+				<input required ng-model="compbook.book_title" type="text" class="form-control wiseowl-form-control" name="bookTitle" id="bookTitle" placeholder="Book Title" />
+    			<div class="error" ng-show="doesShow(addcompBookForm.bookTitle)">{{getErrorText(addcompBookForm.bookTitle.$error)}}</div>
+    		</div>
+    		
+    		<div class="form-group">
+    			<label for="bookAuthor">Book Author:</label>
+				<input required ng-model="compbook.book_author_name" type="text" class="form-control wiseowl-form-control" name="bookAuthor" id="bookAuthor" placeholder="Book Author"/>
+    			<div class="error" ng-show="doesShow(addcompBookForm.bookAuthor)">{{getErrorText(addcompBookForm.bookAuthor.$error)}}</div>
+    		</div>
+
+			<div class="form-group">
+    			<label for="publishDate">Publish Date:</label>
+				<input ng-model="compbook.book_publish_date" type="date" class="form-control wiseowl-form-control" id="publishDate" name="publishDate"/>
+    		</div>  
+			
+    		
+    		<div class="form-group">
+    			<label for="rating">Your Rating:</label>
+				<select required ng-model="compbook.book_read_rating" class="form-control wiseowl-form-control" name="rating" id="rating">
+				    <option value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5">5</option>
+				</select>
+				<div class="error" ng-show="doesShow(addcompBookForm.rating)">{{getErrorText(addcompBookForm.rating.$error)}}</div>				
+    		</div>
+    		
+    		<div class="form-group">
+    			<label for="comments">Book Review Comments:</label>
+				<textarea required ng-model="compbook.book_read_comments" class="form-control wiseowl-form-control" rows="5" name="comments" id="comments" placeholder="Enter your book review comments"/>
+    			<div class="error" ng-show="doesShow(addcompBookForm.comments)">{{getErrorText(addcompBookForm.comments.$error)}}</div>
+    		</div>
+    		
+    		<div class="form-group">
+    			<label for="readDate">Read Date:</label>
+				<input required ng-model="compbook.book_read_date" type="date" class="form-control wiseowl-form-control" name="readDate" id="readDate"/>
+				<div class="error" ng-show="doesShow(addcompBookForm.readDate)">{{getErrorText(addcompBookForm.readDate.$error)}}</div>
+    		</div>    
+    		
+    		<div class="form-group">
+    			<label for="readFormatID">Book Format Read:</label>
+				<select required ng-model="compbook.book_read_format" class="form-control wiseowl-form-control" id="readFormat" name="readFormat">
+					<option value = "1">PDF</option>
+					<option value = "3">Hardbound</option>					
+					<option value = "2">MS Word</option>
+					<option value = "4">Kindle</option>
+					<option value = "5">iBook</option>
+					<option value = "6">ePub</option>
+					<option value = "7">Other</option>
+				</select>
+				<div class="error" ng-show="doesShow(addcompBookForm.readFormat)">{{getErrorText(addcompBookForm.readFormat.$error)}}</div>
+    		</div>
+    		
+    		<div class="form-group">
+    			<label for="booksource_ID">Book Source:</label>
+				<select required ng-model="compbook.book_read_source" class="form-control wiseowl-form-control" id="booksource" name="booksource">
+					<option value = "1">Library</option>
+					<option value = "2">Owned</option>
+					<option value = "3">Friend</option>					
+					<option value = "4">Store</option>
+					<option value = "5">Online</option>
+				</select>
+				<div class="error" ng-show="doesShow(addcompBookForm.booksource)">{{getErrorText(addcompBookForm.booksource.$error)}}</div>
+    		</div>   		
+    			
+    		
+			<div class="form-group">
+    			<label for="notes">Notes:</label>
+				<input ng-model="compbook.book_notes" type="text" class="form-control wiseowl-form-control" id="notes" placeholder="Special Notes"/>
+    		</div>  
+    		
+    		 				
+    		
+    		<button ng-click="submitCompBook(addcompBookForm)">Submit Form</button>
+		</form>
+    </div>
+</div>

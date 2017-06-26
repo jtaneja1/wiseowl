@@ -174,6 +174,9 @@ public String getBook_read_comments() {
 	return book_read_comments;
 }
 
+public void setBook_read_comments(String book_read_comments) {
+	this.book_read_comments = book_read_comments;
+}
 
 public Date getBook_read_date() {
 	return book_read_date;
@@ -206,9 +209,4 @@ public BookFormat getBook_read_format() {
 public void setBook_read_format(BookFormat book_read_format) {
 	this.book_read_format = book_read_format;
 }
-
-public void setBook_read_comments(String book_read_comments) {
-	this.book_read_comments = book_read_comments;
-}
-
 }

@@ -1,0 +1,43 @@
+	<div class="jumbotron">
+			<h1>WiseOwl</h1>
+			<p>
+				WiseOwl is watching you read! 
+			</p>
+	</div>
+      
+	<div class="row">
+		<div class="col-lg-6">
+			<h2>Add Completed Book</h2>
+			<p>Click here to mark a finished book. It's highly suggested you make notes of the best parts if you need to refer to it later!</p>
+			<p class="col-lg-2"><a class="btn btn-primary" href="#/addcomp" role="button">Add Completed Book</a></p>	
+		</div>   
+     
+     
+		<div class="col-lg-6">
+			<h2>Add A Book To Read Later</h2>
+			<p>Click this button to Add a Book To Read Later. A To Read List if you will</p>
+	        <p class="col-lg-2"><a class="btn btn-primary" href="#/addforlat" role="button">Add Book To Read Later</a></p> 
+		</div>
+    
+        
+		<div class="col-lg-6">
+			<h2>View All Finished Books</h2>
+			<p>Click to view all finished books</p>
+			<h4>Last 3 read :</h4>
+			<ul>
+				<li ng-if="compbooklist.length === 0"> No books..... yet</li>
+				<li ng-repeat="book in compbooklist">
+					{{book.book_title}}
+				</li>
+			</ul>
+          
+			<p class="col-lg-2"><a class="btn btn-primary" href="#/compbooks" role="button">View All Finished Books</a></p>
+		</div>
+    
+    <div class="col-lg-6">
+			<h2>View Wish I Had Time To Read These Books</h2>
+			<p>Click this button to view the entire list of books that you wish you had enough free time to read </p>
+			<<p class="col-lg-2"><a class="btn btn-primary" href="#/viewforlat" role="button">View Books You Will Get to Later</a></p>
+		</div>   
+    
+	</div>	
