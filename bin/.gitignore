@@ -1,0 +1,7 @@
+/target/
+
+wiseowl.log
+
+*.classpath
+
+application.properties
