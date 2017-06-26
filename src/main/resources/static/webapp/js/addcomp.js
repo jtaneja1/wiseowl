@@ -42,7 +42,7 @@ angular.module('BookModule')
     			  if(dataFromServer=='') 
     			  {
     				console.log('The Book was NOT added. redirecting now ');
-    				window.location.href = "../html/login.html";
+    				window.location.href = "login.html";
     			  }
     	          console.log('The Book was added '+dataFromServer.book_title);
     	          $location.path("/home");
