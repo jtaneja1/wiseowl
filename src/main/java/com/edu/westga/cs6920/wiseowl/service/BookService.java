@@ -19,7 +19,7 @@ public class BookService
 	@PersistenceContext
     private EntityManager em;
 	
-	final Logger logger = LoggerFactory.getLogger(BookService.class);
+	final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 		
 	/** Gets the domain Book object from the front-end layer, persists it, and returns it back with

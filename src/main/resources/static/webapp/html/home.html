@@ -1,6 +1,6 @@
 	<div class="jumbotron">
 			<h1>WiseOwl</h1>
-			<p class="lead">
+			<p>
 				WiseOwl is watching you read! 
 			</p>
 	</div>
@@ -24,7 +24,13 @@
 			<h2>View All Finished Books</h2>
 			<p>Click to view all finished books</p>
 			<h4>Last 3 read :</h4>
-			          
+			<ul>
+				<li ng-if="compbooklist.length === 0"> No books..... yet</li>
+				<li ng-repeat="book in compbooklist">
+					{{book.book_title}}
+				</li>
+			</ul>
+          
 			<p class="col-lg-2"><a class="btn btn-primary" href="#/compbooks" role="button">View All Finished Books</a></p>
 		</div>
     
