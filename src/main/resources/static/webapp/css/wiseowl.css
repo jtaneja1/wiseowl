@@ -8,7 +8,7 @@ body {
 
 /* Override the 'form-control' width from 100% to 40% */
 .wiseowl-form-control{
-	width: 40%;
+	width: 50%;
 }
 
 /* Error text for form validation errors */
@@ -63,5 +63,21 @@ div.submiterror{
 	text-align: center;
 }
 
+#isbn_button {
+	height:2.5em;
+	margin-left: 1em;
+}
 
-</
+#isbn_label {
+	display:block;
+	padding-top:0.5em;
+	padding-bottom: 0.5em;
+}
+
+#book_ISBN_13 {
+	display:inline;
+}
+
+#rating_label {
+	padding-top: 2em;
+}

@@ -11,6 +11,14 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name="Book.getCompBooksQuery",
+				query="SELECT b " +
+						"FROM Book b " +
+						"WHERE b.book_read_date IS NOT NULL AND "
+						+ "b.create_user.userAuth.username=:username ORDER BY b.book_read_date DESC")
+})
+
 public class Book implements Serializable
 {
 
@@ -23,7 +31,7 @@ private String book_title;
 private String book_author_name;
 
 @Temporal(TemporalType.DATE)
-@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="CST")//this is for jackson to correctly convert JSON date to Java date when the user submits from html page
+@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="CST", pattern = "yyyy/MM/dd")//this is for jackson to correctly convert JSON date to Java date when the user submits from html page
 private Date book_publish_date;
 
 private String book_ISBN_13;
@@ -31,7 +39,7 @@ private String book_notes;
 private String book_read_comments;
 
 @Temporal(TemporalType.DATE)//this is needed so that JPA can map it to the correct data type in the database
-@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="CST")//this is for jackson to correctly convert JSON date to Java date when the user submits from html page
+@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="CST", pattern = "yyyy/MM/dd")//this is for jackson to correctly convert JSON date to Java date when the user submits from html page
 private Date book_read_date;
 
 private String book_read_rating;
@@ -174,9 +182,6 @@ public String getBook_read_comments() {
 	return book_read_comments;
 }
 
-public void setBook_read_comments(String book_read_comments) {
-	this.book_read_comments = book_read_comments;
-}
 
 public Date getBook_read_date() {
 	return book_read_date;
@@ -209,4 +214,9 @@ public BookFormat getBook_read_format() {
 public void setBook_read_format(BookFormat book_read_format) {
 	this.book_read_format = book_read_format;
 }
+
+public void setBook_read_comments(String book_read_comments) {
+	this.book_read_comments = book_read_comments;
+}
+
 }
