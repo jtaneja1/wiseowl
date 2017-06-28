@@ -1,0 +1,75 @@
+
+<div class="alert alert-info fade in" data-alert="alert">
+	<h3>
+    	<strong>
+        	The following are all the Books you have read till date...
+        </strong>
+    </h3>
+</div>
+
+<h4 ng-if="compbooklist.length === 0"> You have not read any books so far !! </h4>
+
+<div ng-if="compbooklist.length !== 0" class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th class="bookindex">Serial #</th>
+				
+				<th class="bookdetails bookdetailsheader">
+					<a href="" ng-click="sortType = 'book_title'; sortReverse = !sortReverse">
+						Book Details
+						<span ng-show="sortType == 'book_title' && !sortReverse" class="fa fa-caret-up"></span>
+        				<span ng-show="sortType == 'book_title' && sortReverse" class="fa fa-caret-down"></span>	
+					</a>
+				</th>
+				
+				<th class="bookrating">
+					<a href="" ng-click="sortType = 'book_read_rating'; sortReverse = !sortReverse">
+						Your Rating
+						<span ng-show="sortType == 'book_read_rating' && !sortReverse" class="fa fa-caret-up"></span>
+        				<span ng-show="sortType == 'book_read_rating' && sortReverse" class="fa fa-caret-down"></span>	
+					</a>
+				</th>
+				
+				<th class="bookreaddate">
+					<a href="" ng-click="sortType = 'book_read_date'; sortReverse = !sortReverse">
+						Read Date
+						<span ng-show="sortType == 'book_read_date' && !sortReverse" class="fa fa-caret-up"></span>
+        				<span ng-show="sortType == 'book_read_date' && sortReverse" class="fa fa-caret-down"></span>	
+				</a>				</th>
+				
+				<th class="booksource">
+					<a href="" ng-click="sortType = 'book_read_source.booksource_desc'; sortReverse = !sortReverse">
+						Book Source
+						<span ng-show="sortType == 'book_read_source.booksource_desc' && !sortReverse" class="fa fa-caret-up"></span>
+        				<span ng-show="sortType == 'book_read_source.booksource_desc' && sortReverse" class="fa fa-caret-down"></span>	
+					</a>
+				</th>
+				
+				<th class="bookformat">
+					<a href="" ng-click="sortType = 'book_read_format.bookformat_name'; sortReverse = !sortReverse">
+						Book Format
+						<span ng-show="sortType == 'book_read_format.bookformat_name' && !sortReverse" class="fa fa-caret-up"></span>
+        				<span ng-show="sortType == 'book_read_format.bookformat_name' && sortReverse" class="fa fa-caret-down"></span>	
+					</a>
+				</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr ng-repeat="book in compbooklist | orderBy:sortType:sortReverse">
+				<td class="bookindex">{{$index+1}}</td>
+				<td class="bookdetails">
+					<div>
+						<span class="booktitle"><a href="#/geteditbook?id={{book.book_ID}}"><strong>{{book.book_title}}</strong></a> by <em>{{book.book_author_name}}</em></span>
+						<p class="bookreadcomment">{{book.book_read_comments}}</p>
+					</div>
+				</td>
+				<td class="bookrating"><img width="70px" ng-src="../image/rating{{book.book_read_rating}}.gif"></td>
+				<td class="bookreaddate">{{book.book_read_date}}</td>
+				<td class="booksource">{{book.book_read_source.booksource_desc}}</td>
+				<td class="bookformat">{{book.book_read_format.bookformat_name}}</td>
+			</tr>		
+		</tbody>	
+	</table>
+</div>
