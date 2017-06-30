@@ -39,7 +39,16 @@ public class UserController
 		User user = userService.loginUser(userAuth);		
 		if(user!=null)session.setAttribute("loggedUser", user);
 		return user;		
-	}	
+	}
+	
+	
+	@RequestMapping(value="getUser", method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
+	public User getUser(HttpSession session) throws Exception
+	{
+		User user = (User) session.getAttribute("loggedUser");
+		return user;		
+	}
 	
 	
 	private String bytesToHex(byte[] bytes) {

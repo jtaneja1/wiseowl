@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * 
+ */
+
 angular.module('BookModule')
 .controller('homeController', ['$rootScope', '$scope', '$interval', '$location', '$http', '$anchorScroll', function ($rootScope, $scope, $interval, $location, $http, $anchorScroll) {
     console.log('homeController created.');
@@ -7,10 +11,10 @@ angular.module('BookModule')
     $scope.getcompbooks=function(){
     	
     	console.log('Retrieving username ---');
-    	var usernameReq = $http.get("/user/getUser");
+    	var usernameReq = $http.get("/user/getUser");//retrieves user details
     	usernameReq.success(function(dataFromServer, status, headers, config) 
 		{			     				
-			  if(dataFromServer==='')
+			  if(dataFromServer==='')//a blank is recd if the server session has ended (java returns null). == check for '' does NOT work since a blank array (if no book is read by a new user) is also interpreted as a ''
 			  {
 				console.log('The User details were NOT retrieved since session has expired. Redirecting now ');
 				window.location.href = "login.html";
@@ -25,12 +29,15 @@ angular.module('BookModule')
     	{
     	      alert("User details retrieval failed!");    	          
     	});
-		
-		console.log('Retrieving last 3 books read by the user ---');				
-		var httpReq = $http.get("/book/getcompbooks/3");		
+    			
+    			
+    	
+		console.log('Retrieving last book read by the user ---');
+		var httpReq = $http.get("/book/getcompbooks/1");
 		httpReq.success(function(dataFromServer, status, headers, config) 
 		{			     				
-			  if(dataFromServer==='')
+			  if(dataFromServer==='')//a blank is recd if the server session has ended (java returns null). == check for '' does NOT work since a blank array (if no book is read by a new user) is also interpreted as a ''
+			  {
 				console.log('The Books were NOT retrieved since session has expired. Redirecting now ');
 				window.location.href = "login.html";
 			  }
@@ -43,7 +50,7 @@ angular.module('BookModule')
 		{
 	          alert("Book retrieval failed!");    	          
 	    });    		    		
-    };
+    };//end of submitCompBook function
     
     $scope.getcompbooks();
 }]);
