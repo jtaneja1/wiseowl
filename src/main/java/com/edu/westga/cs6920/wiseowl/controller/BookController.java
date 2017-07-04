@@ -55,4 +55,21 @@ public class BookController
 	  List<Book> bookList=bookService.getCompBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
 	  return bookList;  
 	 }
+	 
+	 /**
+	  * Gets invoked when all the books/count of books reviewed by the user have to be returned
+	  * @param count the count of the books to return which have been completed by the user
+	  * @return the List of Book objects as a JSON object
+	  */
+	 @RequestMapping(value="getreviewedbooks/{count}", method = RequestMethod.GET, produces="application/json")
+	 @ResponseBody
+	 public List<Book> getReviewedBooks(@PathVariable String count, HttpSession session) throws Exception
+	 {
+	  logger.info("getReviewedBooks Invoked");
+	  User user = (User) session.getAttribute("loggedUser");
+	  if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+	  
+	  List<Book> bookList=bookService.getReviewedBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
+	  return bookList;  
+	 }
 }

@@ -46,4 +46,18 @@ public class BookService
 	  List<Book> results = query.getResultList();
 	  return results;
 	 }
+	 
+	 /** Gets the books reviewed by the user based on the parameter sent by the front end GUI as to how many books 
+	  * need to be returned. A value of -1 means all the books (with pagination logic) 
+	  */
+	 public List<Book> getReviewedBooks(String username,int numberOfBooks)
+	 {
+	  logger.info("Service:getReviewedBooks Invoked");
+	  //Create an execute a named query defined in Book.java since it is related to the Book table
+	  TypedQuery<Book> query = em.createNamedQuery("Book.getReviewedBooksQuery", Book.class);
+	  query.setParameter("username", username);//set the parameter in the named query
+	  if(numberOfBooks>0){query.setMaxResults(numberOfBooks);}
+	  List<Book> results = query.getResultList();
+	  return results;
+	 }
 }

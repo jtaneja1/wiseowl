@@ -51,4 +51,19 @@ public class BookServiceTest {
 		assertFalse(this.bookservice.getCompBooks("jatin", 1).isEmpty());
 	}
 	*/
+	
+	/**
+	 * Test to make sure the getReviewedBook method can return a book with a review.
+	 * @throws Exception 
+	 */
+	/*
+	@Test
+	public void testGetReviewedBooks() throws Exception {
+		this.bookservice = new BookService();
+		this.book = new Book("Title");
+		this.book.setBook_read_rating("5");
+		this.bookservice.addCompBook(this.book);
+		assertFalse(this.bookservice.getReviewedBooks("jatin", 1).isEmpty());
+	}
+	*/
 }

@@ -50,4 +50,19 @@ public class BookControllerTest {
 		assertFalse(this.bookcontroller.getCompBooks(1, this.session).isEmpty());
 	}
 	*/
+	
+	/**
+	 * Test to make sure the getReviewedBook method can return a book with a review.
+	 * @throws Exception 
+	 */
+	/*
+	@Test
+	public void testGetCompBooks() throws Exception {
+		this.bookcontroller = new BookController();
+		this.book = new Book("Title");
+		this.book.setBook_read_rating("5");
+		this.bookcontroller.addCompBook(this.book);
+		assertFalse(this.bookcontroller.getCompBooks(1, this.session).isEmpty());
+	}
+	*/
 }
