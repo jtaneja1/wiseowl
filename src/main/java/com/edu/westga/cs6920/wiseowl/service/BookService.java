@@ -22,7 +22,7 @@ public class BookService
 	@PersistenceContext
     private EntityManager em;
 	
-	final Logger logger = LoggerFactory.getLogger(UserController.class);
+	final Logger logger = LoggerFactory.getLogger(BookService.class);
 	
 		
 	/** Gets the domain Book object from the front-end layer, persists it, and returns it back with
@@ -70,4 +70,23 @@ public class BookService
 	  Book book = em.find(Book.class, new Long(book_ID));// The EM find method finds by primary key the row in the database
 	  return book;
 	 }
+	 
+	 
+	 /** Gets the model Book object from the front-end layer, updates it, and returns it back with
+	  * extra fields populated 
+	  */
+		public Book updateBook(Book book)
+		{		
+			Book bookFromDB = em.find(Book.class, new Long(book.getBook_ID()));// The EM find method finds by primary key the row in the database
+			bookFromDB.setBook_author_name(book.getBook_author_name());
+			bookFromDB.setBook_notes(book.getBook_notes());
+			bookFromDB.setBook_read_comments(book.getBook_read_comments());
+			bookFromDB.setBook_read_date(book.getBook_read_date());
+			bookFromDB.setBook_publish_date(book.getBook_publish_date());
+			bookFromDB.setBook_read_format(book.getBook_read_format());
+			bookFromDB.setBook_read_rating(book.getBook_read_rating());
+			bookFromDB.setBook_read_source(book.getBook_read_source());
+			bookFromDB.setBook_title(book.getBook_title());
+			return bookFromDB;
+		}
 }

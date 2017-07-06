@@ -75,18 +75,36 @@ public class BookController
 	 
 	 /**
 	  * Gets invoked when the Book object from the database is returned using the Primary key
-	  * @param bookID the primary key
+	  * @param book_ID the primary key
 	  * @return the Book object in the database
 	  */
-	 @RequestMapping(value="getbookbyid", method = RequestMethod.GET, produces="application/json")
+	 @RequestMapping(value="geteditbook/{book_ID}", method = RequestMethod.GET, produces="application/json")
 	 @ResponseBody
-	 public Book getBookById(@PathVariable String bookID, HttpSession session) throws Exception 
+	 public Book geteditbook(@PathVariable String book_ID, HttpSession session) throws Exception 
 	 {
 		 logger.info("getBookById Invoked");
 		 User user = (User) session.getAttribute("loggedUser");
 		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
 		 
-		 Book book = bookService.getBookById(Integer.parseInt(bookID));
+		 Book book = bookService.getBookById(Integer.parseInt(book_ID));
 		 return book;
+	 }
+	 
+	 
+	 /**
+	  * Gets invoked when the user updates the Book object
+	  * @param book the book object to be updated
+	  * @return the updated Book object
+	  */
+	 @RequestMapping(value="updateCompBook", method = RequestMethod.POST, produces="application/json")
+	 @ResponseBody
+	 public Book updateCompBook( @RequestBody Book book, HttpSession session) throws Exception
+	 {
+		 logger.info("updateCompBook Invoked for Book with ID:" + book.getBook_ID());
+		 User user = (User) session.getAttribute("loggedUser");
+		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+				 
+		 book=bookService.updateBook(book);		
+		 return book;		
 	 }
 }
