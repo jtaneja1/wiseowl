@@ -72,4 +72,21 @@ public class BookController
 	  List<Book> bookList=bookService.getReviewedBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
 	  return bookList;  
 	 }
+	 
+	 /**
+	  * Gets invoked when the Book object from the database is returned using the Primary key
+	  * @param bookID the primary key
+	  * @return the Book object in the database
+	  */
+	 @RequestMapping(value="getbookbyid", method = RequestMethod.GET, produces="application/json")
+	 @ResponseBody
+	 public Book getBookById(@PathVariable String bookID, HttpSession session) throws Exception 
+	 {
+		 logger.info("getBookById Invoked");
+		 User user = (User) session.getAttribute("loggedUser");
+		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+		 
+		 Book book = bookService.getBookById(Integer.parseInt(bookID));
+		 return book;
+	 }
 }

@@ -60,4 +60,14 @@ public class BookService
 	  List<Book> results = query.getResultList();
 	  return results;
 	 }
+	 
+	 /**
+	  * Gets the Book object from the database using the Primary key
+	  * @param book_ID the primary key which is passed from the UI
+	  * @return the Book object in the database
+	  */
+	 public Book getBookById(int book_ID) {
+	  Book book = em.find(Book.class, new Long(book_ID));// The EM find method finds by primary key the row in the database
+	  return book;
+	 }
 }
