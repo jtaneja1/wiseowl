@@ -7,13 +7,13 @@
     </h3>
 </div>
 
-<!-- The error message at the top of the page in case user submits with errors  -->
+
 <div class="error submiterror" ng-show="showSubmitError"><img alt="X Icon" src="../image/xicon.jpg" class="xicon">Please correct the below errors before submitting</div>
 
 <div class="panel panel-primary" >
 	<div class="panel-heading">Book Details</div>
 	<div class="panel-body">
-		<form  name="addcompBookForm" novalidate id="addcompform"><!-- since angular submits the form, we can remove the 'method=post' attribute -->
+		<form  name="addcompBookForm" novalidate id="addcompform">
 		
   			<div class="form-group">
 				<label for="bookTitle">Book Title *</label>
@@ -90,7 +90,7 @@
     		</div>
 
     		
-    		<button ng-click="updateCompBook(addcompBookForm)">Update</button><!-- Keyboard enter works out of the box for an angular form submit -->
+    		<button ng-click="updateCompBook(addcompBookForm)">Update</button>
 		</form>
     </div>
 </div>
