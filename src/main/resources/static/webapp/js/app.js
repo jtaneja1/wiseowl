@@ -5,6 +5,7 @@ config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/home', { templateUrl: 'home.html', controller: 'homeController'})
     .when('/addcomp', { templateUrl: 'addcomp.html', controller: 'addcompController' })
     .when('/compbooks', { templateUrl: 'compbooks.html', controller: 'compbooksController' })
+    .when('/geteditbook', { templateUrl: 'editbook.html', controller: 'editbookController' })
     .otherwise({ redirectTo: '/home' });
 }]);
 
