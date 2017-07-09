@@ -29,20 +29,17 @@ public class BookServiceTest {
 	 * Test to make sure the addCompBook method properly returns the book given to it.
 	 * @throws Exception 
 	 */
-	/*
 	@Test
 	public void testAddCompBook() throws Exception {
 		this.bookservice = new BookService();
 		this.book = new Book("Title");
 		assertEquals(this.book, this.bookservice.addCompBook(this.book));
 	}
-	*/
 	
 	/**
 	 * Test to make sure the getCompBook method can return a book added to the completed books list.
 	 * @throws Exception 
 	 */
-	/*
 	@Test
 	public void testGetCompBooks() throws Exception {
 		this.bookservice = new BookService();
@@ -50,13 +47,11 @@ public class BookServiceTest {
 		this.bookservice.addCompBook(this.book);
 		assertFalse(this.bookservice.getCompBooks("jatin", 1).isEmpty());
 	}
-	*/
 	
 	/**
 	 * Test to make sure the getReviewedBook method can return a book with a review.
 	 * @throws Exception 
 	 */
-	/*
 	@Test
 	public void testGetReviewedBooks() throws Exception {
 		this.bookservice = new BookService();
@@ -65,19 +60,27 @@ public class BookServiceTest {
 		this.bookservice.addCompBook(this.book);
 		assertFalse(this.bookservice.getReviewedBooks("jatin", 1).isEmpty());
 	}
-	*/
 	
 	/**
 	 * Test to make sure the getBookById method can return a book with a review.
 	 * @throws Exception 
 	 */
-	/*
 	@Test
 	public void testGetBookById() throws Exception {
 		this.bookservice = new BookService();
 		this.book = new Book("Title");
 		this.bookservice.addCompBook(this.book);
-		assertNotNull(this.bookservice.getBookById(1);
+		assertNotNull(this.bookservice.getBookById(1));
 	}
-	*/
+	
+	/**
+	 * Test to make sure the updateBook method updates the model book object correctly.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testUpdateBook() throws Exception {
+		this.bookservice = new BookService();
+		this.book = new Book("Title");
+		assertEquals("Title", this.bookservice.updateBook(this.book));
+	}
 }
