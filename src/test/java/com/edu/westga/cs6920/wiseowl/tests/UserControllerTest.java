@@ -26,7 +26,7 @@ import com.edu.westga.cs6920.wiseowl.service.UserService;
  * of the UserController class work properly.
  * 
  * @author David Bennett
- * @version 6/21/2017
+ * @version 7/9/2017
  */
 public class UserControllerTest {
 
@@ -66,17 +66,17 @@ public class UserControllerTest {
 
 	@Test
 	public void testLoginUser() throws Exception {
-		assertEquals(this.user, this.usercontroller.loginUser(this.session, "test", "password1"));
+		assertEquals(this.user, this.usercontroller.loginUser(this.session, "test1", "password"));
 	}
 	
 	/**
-	 * Test to make sure the user controller logs in the user correctly.
+	 * Test to make sure the user controller can retrieve a user correctly.
 	 * @throws Exception 
 	 */
 
 	@Test
 	public void testGetUser() throws Exception {
 		this.usercontroller.getUser(this.session);
-		assertEquals(this.user, this.usercontroller.loginUser(this.session, "test", "password1"));
+		assertEquals(this.user, this.usercontroller.loginUser(this.session, "test1", "password"));
 	}
 }

@@ -26,7 +26,7 @@ import com.edu.westga.cs6920.wiseowl.service.BookService;
  * of the BookController class work properly.
  * 
  * @author David Bennett
- * @version 6/28/2017
+ * @version 7/9/2017
  */
 public class BookControllerTest {
 

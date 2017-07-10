@@ -22,7 +22,7 @@ import com.edu.westga.cs6920.wiseowl.service.BookService;
  * This JUnit test class tests to make sure the methods of the BookService class work properly.
  * 
  * @author David Bennett
- * @version 6/28/2017
+ * @version 7/9/2017
  */
 public class BookServiceTest {
 
