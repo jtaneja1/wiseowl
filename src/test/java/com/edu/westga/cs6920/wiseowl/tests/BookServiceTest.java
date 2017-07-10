@@ -32,9 +32,6 @@ public class BookServiceTest {
 
 	private Book book;
 	private List<Book> booklist;
-	private HttpServletRequest request;
-	private HttpSession session;
-	private User user;
 	private TypedQuery<Book> query;
 	
 	@Mock
@@ -45,9 +42,7 @@ public class BookServiceTest {
 	
 	@Before
 	public void setup() throws Exception
-	{     
-	    this.request = mock(HttpServletRequest.class);
-	    this.session = mock(HttpSession.class);  
+	{      
 	    this.book = new Book("Title");
 	    this.booklist = new ArrayList<Book>();
 		this.booklist.add(this.book);
@@ -55,8 +50,6 @@ public class BookServiceTest {
 	    
 	    MockitoAnnotations.initMocks(this);
 	    
-	    when(this.request.getSession()).thenReturn(session);
-	    when(this.session.getAttribute("loggedUser")).thenReturn(this.user);
 	    when(this.em.createNamedQuery("Book.getCompBooksQuery", Book.class)).thenReturn(this.query);
 	    when(this.em.createNamedQuery("Book.getReviewedBooksQuery", Book.class)).thenReturn(this.query);
 	    when(this.em.find(Book.class, new Long(this.book.getBook_ID()))).thenReturn(this.book);
