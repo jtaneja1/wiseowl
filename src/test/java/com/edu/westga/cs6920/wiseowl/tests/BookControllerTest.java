@@ -40,7 +40,7 @@ public class BookControllerTest {
 	private BookService bookservice;
 	
 	@InjectMocks
-	private BookController bookcontroller = new BookController();
+	private BookController bookcontroller;
 	
 	@Before
 	public void setup() throws Exception

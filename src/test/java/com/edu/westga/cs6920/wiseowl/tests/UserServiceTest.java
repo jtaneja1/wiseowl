@@ -39,7 +39,7 @@ public class UserServiceTest {
 	private EntityManager em;
 	
 	@InjectMocks
-	private UserService userservice = new UserService();
+	private UserService userservice;
 	
 	@Before
 	public void setup() throws Exception

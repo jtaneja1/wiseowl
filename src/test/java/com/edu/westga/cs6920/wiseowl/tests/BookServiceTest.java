@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -19,7 +16,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.edu.westga.cs6920.wiseowl.model.Book;
-import com.edu.westga.cs6920.wiseowl.model.User;
 import com.edu.westga.cs6920.wiseowl.service.BookService;
 
 /**
@@ -38,12 +34,13 @@ public class BookServiceTest {
 	private EntityManager em;
 	
 	@InjectMocks
-	private BookService bookservice = new BookService();
+	private BookService bookservice;
 	
 	@Before
 	public void setup() throws Exception
 	{      
-	    this.book = new Book("Title");
+	    this.bookservice = new BookService();
+		this.book = new Book("Title");
 	    this.booklist = new ArrayList<Book>();
 		this.booklist.add(this.book);
 		this.query = mock(TypedQuery.class);
