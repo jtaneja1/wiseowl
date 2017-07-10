@@ -57,4 +57,19 @@ public class UserController
 	    return result.toString();
 	}
 	
+	
+	@RequestMapping(value="registerUser", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public User registerUser(HttpSession session, String firstname, String lastname, String nickname, String dob, String username, String password, String password2) throws Exception
+	{
+		logger.info("registerUser Invoked by user {}",username);
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		byte[] password_hash = md.digest(password.trim().getBytes(StandardCharsets.UTF_8));
+		String encoded_password = bytesToHex(password_hash);
+
+		User user = new User(firstname, lastname, nickname, dob, username, encoded_password);
+		user=userService.registerUser(user);
+		return user;		
+	}
+	
 }

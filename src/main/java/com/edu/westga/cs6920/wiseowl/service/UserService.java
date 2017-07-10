@@ -37,4 +37,23 @@ public class UserService
 		return user;
 	}
 	
+	
+	/** Register a new User using this method. It gets the model User object from the front-end layer,
+	 *  persists it, and returns it to the front end */
+	public User registerUser(User user)
+	{
+		String query ="SELECT user from User user JOIN user.userAuth userauth WHERE userauth.username=?1";
+		List<User> users=em.createQuery(query).setParameter(1, user.getUserAuth().getUsername()).getResultList();
+		if(users.size()>0){	return null;} //since username is already in use, cannot register
+
+		//If no user with that username found, proceed with persisting
+		if(user.getUserRole()==null)
+		{
+			UserRole userRole = em.find(UserRole.class, new Long(2));
+			user.setUserRole(userRole);
+		}
+		em.persist(user);
+		return user;
+	}
+	
 }
