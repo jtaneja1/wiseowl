@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name="SITEUSER")
@@ -31,6 +33,7 @@ public class User
 	private String nickname;
 	
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="CST", pattern = "yyyy/MM/dd")
 	private Date dob;
 	
 	@OneToOne

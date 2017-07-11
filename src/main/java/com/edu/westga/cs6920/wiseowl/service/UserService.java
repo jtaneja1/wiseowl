@@ -56,4 +56,17 @@ public class UserService
 		return user;
 	}
 	
+	
+	/** Gets the model User object from the front-end layer, updates it, and returns it back with
+	 * extra fields populated */
+	public User updateProfile(User user)
+	{
+		User userFromDB = em.find(User.class, new Long(user.getUser_ID()));// The EM find method finds by primary key the row in the database
+		userFromDB.setFirstname(user.getFirstname());
+		userFromDB.setLastname(user.getLastname());
+		userFromDB.setNickname(user.getNickname());
+		userFromDB.setDob(user.getDob());
+		return userFromDB;
+	}
+	
 }
