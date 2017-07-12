@@ -1,0 +1,48 @@
+
+<div class="alert alert-info fade in" data-alert="alert">
+    <h3>
+        <strong>
+            Add details about the Book you plan to read later
+        </strong>
+    </h3>
+</div>
+
+<div class="error submiterror" ng-show="showSubmitError"><img alt="X Icon" src="../image/xicon.jpg" class="xicon">Please correct the below errors before submitting</div>
+
+<div class="panel panel-primary" >
+    <div class="panel-heading">Book Details</div>
+    <div class="panel-body">
+        <form  name="addcompBookForm" novalidate id="addcompform">
+
+            <div class="form-group">
+                <label for="book_ISBN_13">Book 10-digit OR 13-digit ISBN (with no hyphens or dashes)</label><br/>
+                <input maxlength="13" ng-model="compbook.book_ISBN_13" type="text" class="form-control wiseowl-form-control" name="book_ISBN_13" id="book_ISBN_13" placeholder="Book ISBN" />
+                <!--<div class="error" ng-show="doesShow(addcompBookForm.book_ISBN_13)">{{getErrorText(addcompBookForm.book_ISBN_13.$error)}}</div>-->
+                <button ng-click="searchISBN(addcompBookForm)" id="isbn_button">Google Search</button>
+                <label id="isbn_label"><em>Click 'Google Search' to auto populate the Book details.</em></label>
+            </div>
+
+            <div class="form-group">
+                <label for="bookTitle">Book Title *</label>
+                <input maxlength="50" required ng-model="compbook.book_title" type="text" class="form-control wiseowl-form-control" name="bookTitle" id="bookTitle" placeholder="Book Title" />
+                <div class="error" ng-show="doesShow(addcompBookForm.bookTitle)">{{getErrorText(addcompBookForm.bookTitle.$error)}}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="bookAuthor">Book Author *</label>
+                <input maxlength="50" required ng-model="compbook.book_author_name" type="text" class="form-control wiseowl-form-control" name="bookAuthor" id="bookAuthor" placeholder="Book Author"/>
+                <div class="error" ng-show="doesShow(addcompBookForm.bookAuthor)">{{getErrorText(addcompBookForm.bookAuthor.$error)}}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="publishDate">Publish Date</label>
+                <input placeholder="MM/DD/YYYY" maxlength="10" ng-pattern="datePattern" ng-model="compbook.book_publish_date" type="text" class="form-control wiseowl-form-control" id="publishDate" name="publishDate"/>
+                <div class="error" ng-show="doesShow(addcompBookForm.publishDate)">{{getErrorText(addcompBookForm.publishDate.$error)}}</div>
+            </div>
+
+
+
+            <button ng-click="submitCompBook(addcompBookForm)">Submit Form</button>
+        </form>
+    </div>
+</div>
