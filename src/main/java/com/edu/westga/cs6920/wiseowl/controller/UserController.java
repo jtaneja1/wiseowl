@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,6 +71,21 @@ public class UserController
 		User user = new User(firstname, lastname, nickname, dob, username, encoded_password);
 		user=userService.registerUser(user);
 		return user;		
+	}
+	
+	
+	@RequestMapping(value="updateprofile", method = RequestMethod.POST, produces="application/json")
+	@ResponseBody
+	public User updateProfile( @RequestBody User user_, HttpSession session) throws Exception
+	{
+		logger.info("updateProfile Invoked for User with firstname:" + user_.getFirstname());
+		User user = (User) session.getAttribute("loggedUser");
+		if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+
+		//book.setUpdate_user(user);
+		user=userService.updateProfile(user_);
+		if(user!=null)session.setAttribute("loggedUser", user);
+		return user;
 	}
 	
 }
