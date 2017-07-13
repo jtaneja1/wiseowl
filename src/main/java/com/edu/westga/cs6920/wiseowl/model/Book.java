@@ -22,7 +22,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 				query="SELECT b " +
 						"FROM Book b " +
 						"WHERE b.book_read_rating IS NOT NULL AND "
-						+ "b.create_user.userAuth.username=:username ORDER BY b.book_read_rating DESC")
+						+ "b.create_user.userAuth.username=:username ORDER BY b.book_read_rating DESC"),
+		@NamedQuery(name="Book.getForLaterBooksQuery",
+		query="SELECT b " +
+				"FROM Book b " +
+				"WHERE b.book_read_date IS NULL AND "
+				+ "b.create_user.userAuth.username=:username ORDER BY b.book_title")
 })
 
 public class Book implements Serializable
