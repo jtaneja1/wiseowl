@@ -66,27 +66,37 @@ public class BookService
 	  * @param book_ID the primary key which is passed from the UI
 	  * @return the Book object in the database
 	  */
-	 public Book getBookById(int book_ID) {
-	  Book book = em.find(Book.class, new Long(book_ID));// The EM find method finds by primary key the row in the database
-	  return book;
+	 public Book getBookById(int book_ID) 
+	 {
+		 Book book = em.find(Book.class, new Long(book_ID));// The EM find method finds by primary key the row in the database
+		 return book;
 	 }
 	 
 	 
 	 /** Gets the model Book object from the front-end layer, updates it, and returns it back with
 	  * extra fields populated 
 	  */
-		public Book updateBook(Book book)
-		{		
-			Book bookFromDB = em.find(Book.class, new Long(book.getBook_ID()));// The EM find method finds by primary key the row in the database
-			bookFromDB.setBook_author_name(book.getBook_author_name());
-			bookFromDB.setBook_notes(book.getBook_notes());
-			bookFromDB.setBook_read_comments(book.getBook_read_comments());
-			bookFromDB.setBook_read_date(book.getBook_read_date());
-			bookFromDB.setBook_publish_date(book.getBook_publish_date());
-			bookFromDB.setBook_read_format(book.getBook_read_format());
-			bookFromDB.setBook_read_rating(book.getBook_read_rating());
-			bookFromDB.setBook_read_source(book.getBook_read_source());
-			bookFromDB.setBook_title(book.getBook_title());
-			return bookFromDB;
-		}
+	 public Book updateBook(Book book)
+	 {		
+		 Book bookFromDB = em.find(Book.class, new Long(book.getBook_ID()));// The EM find method finds by primary key the row in the database
+		 bookFromDB.setBook_author_name(book.getBook_author_name());
+		 bookFromDB.setBook_notes(book.getBook_notes());
+		 bookFromDB.setBook_read_comments(book.getBook_read_comments());
+		 bookFromDB.setBook_read_date(book.getBook_read_date());
+		 bookFromDB.setBook_publish_date(book.getBook_publish_date());
+		 bookFromDB.setBook_read_format(book.getBook_read_format());
+		 bookFromDB.setBook_read_rating(book.getBook_read_rating());
+		 bookFromDB.setBook_read_source(book.getBook_read_source());
+		 bookFromDB.setBook_title(book.getBook_title());
+		 return bookFromDB;
+	 }
+		
+	 /** Gets the domain Book object from the front-end layer, persists it, and returns it back with
+	  * extra fields populated
+	  */
+	 public Book addForlaterBook(Book book)
+	 {
+		 em.persist(book);// no need to find() User first to set the relationship.
+		 return book;
+	 }
 }

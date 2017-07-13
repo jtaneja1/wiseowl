@@ -107,4 +107,16 @@ public class BookController
 		 book=bookService.updateBook(book);		
 		 return book;		
 	 }
+	 
+	 @RequestMapping(value="addForlaterBook", method = RequestMethod.POST, produces="application/json")
+	 @ResponseBody
+	 public Book addForlaterBook( @RequestBody Book book, HttpSession session) throws Exception
+	 {
+	  User user = (User) session.getAttribute("loggedUser");
+	  if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+
+	  book.setCreate_user(user);
+	  book=bookService.addForlaterBook(book);
+	  return book;
+	 }
 }
