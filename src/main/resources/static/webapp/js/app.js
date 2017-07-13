@@ -7,6 +7,7 @@ config(['$routeProvider', function ($routeProvider) {
     .when('/compbooks', { templateUrl: 'compbooks.html', controller: 'compbooksController' })
     .when('/geteditbook', { templateUrl: 'editbook.html', controller: 'editbookController' })
     .when('/geteditprofile', { templateUrl: 'editprofile.html', controller: 'editprofileController' })
+    .when('/addforlat', { templateUrl: 'addforlater.html', controller: 'addforlaterController' })
     .otherwise({ redirectTo: '/home' });
 }]);
 
