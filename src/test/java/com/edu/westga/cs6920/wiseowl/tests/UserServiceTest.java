@@ -27,7 +27,7 @@ import com.edu.westga.cs6920.wiseowl.service.UserService;
  * of the UserService class work properly.
  * 
  * @author David Bennett
- * @version 7/9/2017
+ * @version 7/13/2017
  */
 public class UserServiceTest {
 

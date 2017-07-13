@@ -26,7 +26,7 @@ import com.edu.westga.cs6920.wiseowl.service.UserService;
  * of the UserController class work properly.
  * 
  * @author David Bennett
- * @version 7/9/2017
+ * @version 7/13/2017
  */
 public class UserControllerTest {
 
@@ -99,7 +99,18 @@ public class UserControllerTest {
 	 */
 
 	@Test
-	public void testUpdateProfile() throws Exception {
+	public void testUpdateProfileWithValidUser() throws Exception {
 		assertEquals(this.user, this.usercontroller.updateProfile(this.user, this.session));
+	}
+	
+	/**
+	 * Test to make sure the updateProfile method returns null if the session has expired.
+	 * @throws Exception 
+	 */
+
+	@Test
+	public void testUpdateProfileWithNullUser() throws Exception {
+		when(this.session.getAttribute("loggedUser")).thenReturn(null);
+		assertNull(this.usercontroller.updateProfile(this.user, this.session));
 	}
 }
