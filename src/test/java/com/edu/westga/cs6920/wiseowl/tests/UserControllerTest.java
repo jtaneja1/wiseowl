@@ -57,6 +57,8 @@ public class UserControllerTest {
 	    when(this.request.getSession()).thenReturn(session);
 	    when(this.session.getAttribute("loggedUser")).thenReturn(this.user);
 	    when(this.userservice.loginUser(Mockito.notNull())).thenReturn(this.user);
+	    when(this.userservice.registerUser(Mockito.notNull())).thenReturn(this.user);
+	    when(this.userservice.updateProfile(this.user)).thenReturn(this.user);
 	}
 	
 	/**
@@ -78,5 +80,26 @@ public class UserControllerTest {
 	public void testGetUser() throws Exception {
 		this.usercontroller.getUser(this.session);
 		assertEquals(this.user, this.usercontroller.loginUser(this.session, "test1", "password"));
+	}
+	
+	/**
+	 * Test to make sure the user controller can register a user correctly.
+	 * @throws Exception 
+	 */
+
+	@Test
+	public void testRegisterUser() throws Exception {
+		User registeredUser = this.usercontroller.registerUser(this.session, "Test", "User", "Testy", "01/01/2001", "test1", "password", "private");
+		assertEquals(this.user, registeredUser);
+	}
+	
+	/**
+	 * Test to make sure the user controller can update a user's profile correctly.
+	 * @throws Exception 
+	 */
+
+	@Test
+	public void testUpdateProfile() throws Exception {
+		assertEquals(this.user, this.usercontroller.updateProfile(this.user, this.session));
 	}
 }
