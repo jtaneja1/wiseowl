@@ -22,7 +22,7 @@ import com.edu.westga.cs6920.wiseowl.service.BookService;
  * This JUnit test class tests to make sure the methods of the BookService class work properly.
  * 
  * @author David Bennett
- * @version 7/9/2017
+ * @version 7/13/2017
  */
 public class BookServiceTest {
 
@@ -102,5 +102,14 @@ public class BookServiceTest {
 	@Test
 	public void testUpdateBook() throws Exception {
 		assertEquals(this.book, this.bookservice.updateBook(this.book));
+	}
+	
+	/**
+	 * Test to make sure the addForlaterBook method properly returns the book given to it.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testAddForLaterBook() throws Exception {
+		assertEquals(this.book, this.bookservice.addForlaterBook(this.book));
 	}
 }

@@ -26,7 +26,7 @@ import com.edu.westga.cs6920.wiseowl.service.BookService;
  * of the BookController class work properly.
  * 
  * @author David Bennett
- * @version 7/9/2017
+ * @version 7/13/2017
  */
 public class BookControllerTest {
 
@@ -62,10 +62,11 @@ public class BookControllerTest {
 	    when(this.bookservice.getReviewedBooks(Mockito.anyString(), Mockito.anyInt())).thenReturn(this.booklist);
 	    when(this.bookservice.getBookById(Mockito.anyInt())).thenReturn(this.book);
 	    when(this.bookservice.updateBook(this.book)).thenReturn(this.book);
+	    when(this.bookservice.addForlaterBook(this.book)).thenReturn(this.book);
 	}
 	
 	/**
-	 * Test to make sure the book controller logs returns the book given to it.
+	 * Test to make sure the addCompBook method returns the book given to it.
 	 * @throws Exception 
 	 */
 	@Test
@@ -111,5 +112,14 @@ public class BookControllerTest {
 	@Test
 	public void testUpdateBook() throws Exception {
 		assertEquals(this.book, this.bookcontroller.updateCompBook(this.book, this.session));
+	}
+	
+	/**
+	 * Test to make sure the addForlaterBook method returns the book given to it.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testAddForLaterBook() throws Exception {
+		assertEquals(this.book, this.bookcontroller.addForlaterBook(this.book, this.session));
 	}
 }

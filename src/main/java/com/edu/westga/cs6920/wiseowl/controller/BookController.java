@@ -48,12 +48,12 @@ public class BookController
 	 @ResponseBody
 	 public List<Book> getCompBooks(@PathVariable String count, HttpSession session) throws Exception
 	 {
-	  logger.info("getCompBooks Invoked");
-	  User user = (User) session.getAttribute("loggedUser");
-	  if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+		logger.info("getCompBooks Invoked");
+		User user = (User) session.getAttribute("loggedUser");
+		if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
 	  
-	  List<Book> bookList=bookService.getCompBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
-	  return bookList;  
+		List<Book> bookList=bookService.getCompBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
+		return bookList;  
 	 }
 	 
 	 /**
@@ -65,12 +65,12 @@ public class BookController
 	 @ResponseBody
 	 public List<Book> getReviewedBooks(@PathVariable String count, HttpSession session) throws Exception
 	 {
-	  logger.info("getReviewedBooks Invoked");
-	  User user = (User) session.getAttribute("loggedUser");
-	  if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+		 logger.info("getReviewedBooks Invoked");
+		 User user = (User) session.getAttribute("loggedUser");
+		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
 	  
-	  List<Book> bookList=bookService.getReviewedBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
-	  return bookList;  
+		 List<Book> bookList=bookService.getReviewedBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
+		 return bookList;  
 	 }
 	 
 	 /**
@@ -112,11 +112,11 @@ public class BookController
 	 @ResponseBody
 	 public Book addForlaterBook( @RequestBody Book book, HttpSession session) throws Exception
 	 {
-	  User user = (User) session.getAttribute("loggedUser");
-	  if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+		 User user = (User) session.getAttribute("loggedUser");
+		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
 
-	  book.setCreate_user(user);
-	  book=bookService.addForlaterBook(book);
-	  return book;
+		 book.setCreate_user(user);
+		 book=bookService.addForlaterBook(book);
+		 return book;
 	 }
 }
