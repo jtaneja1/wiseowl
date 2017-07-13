@@ -32,7 +32,7 @@ public class UserService
 		Query query = em.createQuery(queryString);
 		query.setParameter(1, userAuth.getUsername());
 		query.setParameter(2, userAuth.getPassword());
-		List<User> users=query.getResultList();
+		List<User> users = query.getResultList();
 		if(users.size()>0){	return user=users.get(0);}
 		return user;
 	}
@@ -42,8 +42,10 @@ public class UserService
 	 *  persists it, and returns it to the front end */
 	public User registerUser(User user)
 	{
-		String query ="SELECT user from User user JOIN user.userAuth userauth WHERE userauth.username=?1";
-		List<User> users=em.createQuery(query).setParameter(1, user.getUserAuth().getUsername()).getResultList();
+		String queryString ="SELECT user from User user JOIN user.userAuth userauth WHERE userauth.username=?1";
+		Query query = em.createQuery(queryString);
+		query.setParameter(1, user.getUserAuth().getUsername());
+		List<User> users = query.getResultList();
 		if(users.size()>0){	return null;} //since username is already in use, cannot register
 
 		//If no user with that username found, proceed with persisting
