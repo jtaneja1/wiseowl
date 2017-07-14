@@ -49,6 +49,7 @@ public class BookServiceTest {
 	    
 	    when(this.em.createNamedQuery("Book.getCompBooksQuery", Book.class)).thenReturn(this.query);
 	    when(this.em.createNamedQuery("Book.getReviewedBooksQuery", Book.class)).thenReturn(this.query);
+	    when(this.em.createNamedQuery("Book.getForLaterBooksQuery", Book.class)).thenReturn(this.query);
 	    when(this.em.find(Book.class, new Long(this.book.getBook_ID()))).thenReturn(this.book);
 	    when(query.setParameter("username", "test1")).thenReturn(query);
 	    when(query.setMaxResults(Mockito.anyInt())).thenReturn(query);
@@ -65,7 +66,7 @@ public class BookServiceTest {
 	}
 	
 	/**
-	 * Test to make sure the getCompBook method can return a book added to the completed books list.
+	 * Test to make sure the getCompBooks method can return a book added to the completed books list.
 	 * @throws Exception 
 	 */
 	@Test
@@ -111,5 +112,15 @@ public class BookServiceTest {
 	@Test
 	public void testAddForLaterBook() throws Exception {
 		assertEquals(this.book, this.bookservice.addForlaterBook(this.book));
+	}
+	
+	/**
+	 * Test to make sure the getForLaterBook method can return a book added to the "for later" books list.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testGetForLaterBooks() throws Exception {
+		this.bookservice.addForlaterBook(this.book);
+		assertEquals(this.booklist, this.bookservice.getForLaterBooks("test1", 1));
 	}
 }

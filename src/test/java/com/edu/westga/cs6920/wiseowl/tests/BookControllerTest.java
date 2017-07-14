@@ -63,6 +63,7 @@ public class BookControllerTest {
 	    when(this.bookservice.getBookById(Mockito.anyInt())).thenReturn(this.book);
 	    when(this.bookservice.updateBook(this.book)).thenReturn(this.book);
 	    when(this.bookservice.addForlaterBook(this.book)).thenReturn(this.book);
+	    when(this.bookservice.getForLaterBooks(Mockito.anyString(), Mockito.anyInt())).thenReturn(this.booklist);
 	}
 	
 	/**
@@ -121,5 +122,15 @@ public class BookControllerTest {
 	@Test
 	public void testAddForLaterBook() throws Exception {
 		assertEquals(this.book, this.bookcontroller.addForlaterBook(this.book, this.session));
+	}
+	
+	/**
+	 * Test to make sure the getForLaterBooks method can return a book added to the "for later" books list.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testGetForLaterBooks() throws Exception {
+		this.bookcontroller.addForlaterBook(this.book, this.session);
+		assertEquals(this.booklist, this.bookcontroller.getForLaterBooks("1", this.session));
 	}
 }
