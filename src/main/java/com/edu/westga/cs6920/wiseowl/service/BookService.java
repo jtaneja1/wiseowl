@@ -99,4 +99,18 @@ public class BookService
 		 em.persist(book);// no need to find() User first to set the relationship.
 		 return book;
 	 }
+	 
+	 /** Gets the books added by the user for later based on the parameter sent by the front end GUI as to how many books
+	  * need to be returned. A value of -1 means all the books (with pagination logic)
+	  */
+	 public List<Book> getForLaterBooks(String username,int numberOfBooks)
+	 {
+		 logger.info("Service:getForLaterBooks Invoked");
+		 //Create an execute a named query defined in Book.java since it is related to the Book table
+		 TypedQuery<Book> query = em.createNamedQuery("Book.getForLaterBooksQuery", Book.class);
+		 query.setParameter("username", username);//set the parameter in the named query
+		 if(numberOfBooks>0){query.setMaxResults(numberOfBooks);}
+		 List<Book> results = query.getResultList();
+		 return results;
+	 }
 }

@@ -119,4 +119,21 @@ public class BookController
 		 book=bookService.addForlaterBook(book);
 		 return book;
 	 }
+	 
+	 /**
+	  * Gets invoked when all the books/count of books added by the user for later have to be returned
+	  * @param count the count of the books to return which have been added by the user for later
+	  * @return the List of Book objects as a JSON object
+	  */
+	 @RequestMapping(value="getforlaterbooks/{count}", method = RequestMethod.GET, produces="application/json")
+	 @ResponseBody
+	 public List<Book> getForLaterBooks(@PathVariable String count, HttpSession session) throws Exception
+	 {
+		 logger.info("getForLaterBooks Invoked");
+		 User user = (User) session.getAttribute("loggedUser");
+		 if(user==null){return null;} //If the session has expired, send null so that the user is redirected to the login page
+
+		 List<Book> bookList=bookService.getForLaterBooks(user.getUserAuth().getUsername(),Integer.parseInt(count));
+		 return bookList;
+	 }
 }
