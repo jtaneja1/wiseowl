@@ -8,6 +8,8 @@ config(['$routeProvider', function ($routeProvider) {
     .when('/geteditbook', { templateUrl: 'editbook.html', controller: 'editbookController' })
     .when('/geteditprofile', { templateUrl: 'editprofile.html', controller: 'editprofileController' })
     .when('/addforlat', { templateUrl: 'addforlater.html', controller: 'addforlaterController' })
+    .when('/forlaterbooks', { templateUrl: 'forlaterbooks.html', controller: 'forlaterbooksController' })
+    .when('/geteditforlaterbook', { templateUrl: 'editforlaterbook.html', controller: 'editforlaterbookController' })    
     .otherwise({ redirectTo: '/home' });
 }]);
 

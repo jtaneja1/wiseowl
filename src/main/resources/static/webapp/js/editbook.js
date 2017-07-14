@@ -19,11 +19,15 @@ angular.module('BookModule')
     		}
     		console.dir(dataFromServer);
     		$scope.toeditbook=dataFromServer;
-            var readdateArr = $scope.toeditbook.book_read_date.split("-"); 
-            $scope.toeditbook.book_read_date = readdateArr[1]+"/"+readdateArr[2]+"/"+readdateArr[0];
+            if($scope.toeditbook.book_read_date){
+            	var readdateArr = $scope.toeditbook.book_read_date.split("-");
+                $scope.toeditbook.book_read_date = readdateArr[1]+"/"+readdateArr[2]+"/"+readdateArr[0];
+            }
 
-            var pubdateArr = $scope.toeditbook.book_publish_date.split("-");
-            $scope.toeditbook.book_publish_date = pubdateArr[1]+"/"+pubdateArr[2]+"/"+pubdateArr[0];
+            if($scope.toeditbook.book_publish_date) {
+                var pubdateArr = $scope.toeditbook.book_publish_date.split("-");
+                $scope.toeditbook.book_publish_date = pubdateArr[1] + "/" + pubdateArr[2] + "/" + pubdateArr[0];
+            }
     		console.log('The following Book was retrieved for editing: '+console.dir($scope.toeditbook));    		          	          	          
     	});
     	
@@ -52,7 +56,8 @@ angular.module('BookModule')
 				var pubdateArr = $scope.toeditbook.book_publish_date.split("/");
 				$scope.toeditbook.book_publish_date = pubdateArr[2] + "/" + pubdateArr[0] + "/" + pubdateArr[1];
 			}
-    		
+
+        	$scope.toeditbook.create_user=null;
     		var httpReq = $http.post("/book/updateCompBook", $scope.toeditbook);
     		
     		httpReq.success(function(dataFromServer, status, headers, config) {
