@@ -88,4 +88,13 @@ public class UserController
 		return user;
 	}
 	
+	
+	@RequestMapping(value="logout", method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
+	public void logoutUser(HttpSession session) throws Exception
+	{
+		logger.info("logoutUser Invoked");
+		session.invalidate();
+	}
+	
 }
