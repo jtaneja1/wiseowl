@@ -104,7 +104,7 @@
                 $.get("/user/logout")
                     .done(function( data ) {
                        console.log('Logout successful. Redirecting to login page');
-                       window.location.href = "Login.html";
+                       window.location.href = "login.html";
                     })
                     .fail(function( jqxhr, textStatus, error ) {
                         var err = textStatus + ", " + error;
