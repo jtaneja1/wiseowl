@@ -52,6 +52,11 @@ angular.module('BookModule')
                 $anchorScroll();
                 return;
             }
+            
+            if(new Date($scope.toeditprofile.dob).getTime() > new Date().getTime()){
+                alert('The Date of Birth cannot be in the future');
+                return;
+            }
 
             var dobArr = $scope.toeditprofile.dob.split("/");
             $scope.toeditprofile.dob = dobArr[2]+"/"+dobArr[0]+"/"+dobArr[1];

@@ -61,7 +61,18 @@ angular.module('BookModule')
     			$scope.showSubmitError=true;
     			$anchorScroll();
     			return;
-    			}
+    		}
+    			
+    		if(new Date($scope.compbook.book_read_date).getTime() > new Date().getTime()){
+    			alert('The Read Date cannot be in the future');
+    			return;
+			}
+			if($scope.compbook.book_publish_date) {
+				if (new Date($scope.compbook.book_publish_date).getTime() > new Date().getTime()) {
+					alert('The Publish Date cannot be in the future');
+					return;
+				}
+			}	
     		var readdateArr = $scope.compbook.book_read_date.split("/"); //mm/dd/yyyy
     		$scope.compbook.book_read_date = readdateArr[2]+"/"+readdateArr[0]+"/"+readdateArr[1];
 
