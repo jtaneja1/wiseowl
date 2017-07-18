@@ -43,9 +43,9 @@ angular.module('BookModule')
             $scope.compbook.book_author_name = dataFromServer.items[0].volumeInfo.authors[0];
 
             var dateArr = dataFromServer.items[0].volumeInfo.publishedDate.split("-");  // ex input "2010-01-18"
-            $scope.compbook.book_publish_date =  dateArr[1]+ "/" +dateArr[2]+ "/" +dateArr[0];
-            //$scope.compbook.book_publish_date = dataFromServer.items[0].volumeInfo.publishedDate;
-
+            if(dateArr.length === 3){
+            $scope.compbook.book_publish_date =  dateArr[1]+ "/" +dateArr[2]+ "/" +dateArr[0];            
+			}
         });
         httpReq.error(function(data, status, headers, config) {
             alert("ISBN search failed! Please enter the book details manually");
