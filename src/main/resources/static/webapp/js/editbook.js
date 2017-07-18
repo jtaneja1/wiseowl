@@ -43,6 +43,11 @@ angular.module('BookModule')
     		console.log('The following book was updated and submitted by the user ---');
     		console.dir($scope.toeditbook);
     		
+    		if(formname.$pristine){
+				alert('Nothing to update. Please make some changes before updating');
+				return;
+			}
+			
     		if(formname.$pristine || formname.$invalid){
     			$scope.showSubmitError=true;
     			$anchorScroll();
